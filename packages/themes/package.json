@@ -1,5 +1,5 @@
 {
-  "name": "@gve/themes",
+  "name": "@gvejs/themes",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
@@ -23,5 +23,17 @@
   ],
   "engines": {
     "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rms-pro/gve.git",
+    "directory": "packages/themes"
+  },
+  "homepage": "https://github.com/rms-pro/gve/tree/main/packages/themes#readme",
+  "bugs": {
+    "url": "https://github.com/rms-pro/gve/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

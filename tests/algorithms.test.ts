@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
-import * as algorithms from '@gve/algorithms';
-import type { Algorithm } from '@gve/core';
-import { isEvent } from '@gve/core';
-import { createPlayback, generateTrace } from '@gve/runtime';
+import * as algorithms from '@gvejs/algorithms';
+import type { Algorithm } from '@gvejs/core';
+import { isEvent } from '@gvejs/core';
+import { createPlayback, generateTrace } from '@gvejs/runtime';
 
 function verify<I, R>(algorithm: Algorithm<I, R>, input: NoInfer<I>) {
   const trace = generateTrace(algorithm, input);

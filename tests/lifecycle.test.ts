@@ -1,7 +1,7 @@
 import { afterEach, expect, it, vi } from 'vitest';
-import { bubbleSort } from '@gve/algorithms';
-import { describeEvent, parseTrace, serializeTrace } from '@gve/core';
-import { createPlayback, generateTrace } from '@gve/runtime';
+import { bubbleSort } from '@gvejs/algorithms';
+import { describeEvent, parseTrace, serializeTrace } from '@gvejs/core';
+import { createPlayback, generateTrace } from '@gvejs/runtime';
 
 const input = [3, 2, 1];
 const trace = generateTrace(bubbleSort, input);

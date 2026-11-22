@@ -1,5 +1,5 @@
 {
-  "name": "@gve/runtime",
+  "name": "@gvejs/runtime",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
@@ -15,11 +15,23 @@
     }
   },
   "dependencies": {
-    "@gve/core": "workspace:^"
+    "@gvejs/core": "workspace:^"
   },
   "description": "Trace generation and deterministic GVE playback",
   "sideEffects": false,
   "engines": {
     "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rms-pro/gve.git",
+    "directory": "packages/runtime"
+  },
+  "homepage": "https://github.com/rms-pro/gve/tree/main/packages/runtime#readme",
+  "bugs": {
+    "url": "https://github.com/rms-pro/gve/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

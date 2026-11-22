@@ -1,4 +1,4 @@
-# @gve/algorithms
+# @gvejs/algorithms
 
 Built-in GVE algorithm definitions. MIT-licensed ESM with TypeScript declarations.
 

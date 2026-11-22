@@ -1,4 +1,4 @@
-# @gve/runtime
+# @gvejs/runtime
 
 Trace generation and deterministic GVE playback. MIT-licensed ESM with TypeScript declarations.
 

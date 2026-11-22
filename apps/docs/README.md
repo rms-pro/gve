@@ -38,18 +38,18 @@ The [Gnome Sort example](../../examples/gnome-sort.ts) defines a new input schem
 pnpm build:packages
 node --disable-warning=ExperimentalWarning --input-type=module -e '
   import { gnomeSort } from "./examples/gnome-sort.ts";
-  import { generateTrace } from "@gve/runtime";
+  import { generateTrace } from "@gvejs/runtime";
   console.log(generateTrace(gnomeSort, [4, 2, 3, 1]).result);
 '
 ```
 
 To display it, pass `gnomeSort` as the `algorithm` prop in the React quick start. An application can add it to its own catalog by stable metadata ID.
 
-Use `RendererRegistration<T>` to bind a state kind to a render function. The renderer receives `VisualState` and can use `layoutCells` or `layoutDiagram` from `@gve/renderers`. React hosts pass their registrations through the `renderers` prop. A namespaced kind such as `example:board` allows the host to bind an application-specific view. Layout functions support arrays, stacks, queues, matrices, graphs, trees, linked structures, and recursion trees. In a custom reducer, populate the relevant fields such as `matrix`, `nodes`, and `edges`; keep algorithm decisions in the generator. Node IDs should be unique within a state.
+Use `RendererRegistration<T>` to bind a state kind to a render function. The renderer receives `VisualState` and can use `layoutCells` or `layoutDiagram` from `@gvejs/renderers`. React hosts pass their registrations through the `renderers` prop. A namespaced kind such as `example:board` allows the host to bind an application-specific view. Layout functions support arrays, stacks, queues, matrices, graphs, trees, linked structures, and recursion trees. In a custom reducer, populate the relevant fields such as `matrix`, `nodes`, and `edges`; keep algorithm decisions in the generator. Node IDs should be unique within a state.
 
 ## React integration and accessibility
 
-`AlgorithmVisualizer` combines the controls, timeline, canvas, and inspector. Hosts can also use the individual components with a `Playback` instance. Keep algorithm, input, and options references stable to preserve the current player. Import `@gve/themes/style.css` or provide your own component styles. Pass a theme object with colors to apply CSS custom properties while retaining light, dark, or system color mode.
+`AlgorithmVisualizer` combines the controls, timeline, canvas, and inspector. Hosts can also use the individual components with a `Playback` instance. Keep algorithm, input, and options references stable to preserve the current player. Import `@gvejs/themes/style.css` or provide your own component styles. Pass a theme object with colors to apply CSS custom properties while retaining light, dark, or system color mode.
 
 Playback controls are native buttons, the timeline uses a keyboard-operable range input, and the canvas supports Left, Right, and Space when focused. The included CSS follows the operating system's reduced-motion preference and keeps the numeric cell values visible throughout playback.
 

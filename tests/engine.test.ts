@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
-import * as algorithms from '@gve/algorithms';
-import { isEvent, parseTrace, serializeTrace } from '@gve/core';
-import { layoutCells, layoutDiagram } from '@gve/renderers';
-import { createPlayback, generateTrace, streamExecution } from '@gve/runtime';
+import * as algorithms from '@gvejs/algorithms';
+import { isEvent, parseTrace, serializeTrace } from '@gvejs/core';
+import { layoutCells, layoutDiagram } from '@gvejs/renderers';
+import { createPlayback, generateTrace, streamExecution } from '@gvejs/runtime';
 import { gnomeSort } from '../examples/gnome-sort.js';
 
 const sorts = [

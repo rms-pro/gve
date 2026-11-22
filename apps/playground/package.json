@@ -1,5 +1,5 @@
 {
-  "name": "@gve/playground",
+  "name": "@gvejs/playground",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,10 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@gve/core": "workspace:^",
-    "@gve/react": "workspace:^",
-    "@gve/algorithms": "workspace:^",
-    "@gve/themes": "workspace:^",
+    "@gvejs/core": "workspace:^",
+    "@gvejs/react": "workspace:^",
+    "@gvejs/algorithms": "workspace:^",
+    "@gvejs/themes": "workspace:^",
     "react": "^19",
     "react-dom": "^19"
   },

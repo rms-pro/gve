@@ -1,5 +1,5 @@
 {
-  "name": "@gve/react",
+  "name": "@gvejs/react",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
@@ -15,10 +15,10 @@
     }
   },
   "dependencies": {
-    "@gve/core": "workspace:^",
-    "@gve/runtime": "workspace:^",
-    "@gve/renderers": "workspace:^",
-    "@gve/themes": "workspace:^"
+    "@gvejs/core": "workspace:^",
+    "@gvejs/runtime": "workspace:^",
+    "@gvejs/renderers": "workspace:^",
+    "@gvejs/themes": "workspace:^"
   },
   "peerDependencies": {
     "react": "^18 || ^19"
@@ -30,5 +30,17 @@
   "sideEffects": false,
   "engines": {
     "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rms-pro/gve.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/rms-pro/gve/tree/main/packages/react#readme",
+  "bugs": {
+    "url": "https://github.com/rms-pro/gve/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

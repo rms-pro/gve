@@ -1,5 +1,5 @@
-import { isJson } from '@gve/core';
-import type { Json, VisualState } from '@gve/core';
+import { isJson } from '@gvejs/core';
+import type { Json, VisualState } from '@gvejs/core';
 export interface Cell {
   key: string;
   label: string;

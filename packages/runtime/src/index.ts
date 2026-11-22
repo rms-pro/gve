@@ -4,14 +4,14 @@ import {
   isJson,
   reduceEvent,
   validateTrace,
-} from '@gve/core';
+} from '@gvejs/core';
 import type {
   Algorithm,
   BuiltinEvent,
   CustomEvent,
   Trace,
   VisualState,
-} from '@gve/core';
+} from '@gvejs/core';
 
 export interface ExecutionLimits {
   maxTimeMs?: number;

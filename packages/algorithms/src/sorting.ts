@@ -1,5 +1,5 @@
-import { defineAlgorithm } from '@gve/core';
-import type { BuiltinEvent } from '@gve/core';
+import { defineAlgorithm } from '@gvejs/core';
+import type { BuiltinEvent } from '@gvejs/core';
 
 export const numbers = (value: unknown): value is number[] =>
   Array.isArray(value) && Array.from(value).every(n => typeof n === 'number' && Number.isFinite(n));

@@ -12,11 +12,11 @@ import type {
   CustomEvent,
   RendererRegistration,
   VisualState,
-} from '@gve/core';
-import { layoutCells, layoutDiagram, formatValue } from '@gve/renderers';
-import { createPlayback, generateTrace } from '@gve/runtime';
-import type { ExecutionLimits, Playback, PlaybackOptions } from '@gve/runtime';
-import type { Theme, ThemeMode } from '@gve/themes';
+} from '@gvejs/core';
+import { layoutCells, layoutDiagram, formatValue } from '@gvejs/renderers';
+import { createPlayback, generateTrace } from '@gvejs/runtime';
+import type { ExecutionLimits, Playback, PlaybackOptions } from '@gvejs/runtime';
+import type { Theme, ThemeMode } from '@gvejs/themes';
 
 export function usePlayback(playback: Playback) {
   return useSyncExternalStore(

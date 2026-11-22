@@ -6,22 +6,26 @@
     "Chromium, Firefox and WebKit playground, axe and responsiveness verification",
     "Registry advisory audit and dependency remediation",
     "Trace boundary hardening and benchmark rerun",
-    "Release validation report and manual accessibility checklist"
+    "Release validation report and manual accessibility checklist",
+    "Public npm namespace and canonical package metadata migration",
+    "Verified archive allowlist and separate manual OIDC publishing workflow"
   ],
   "pendingPhases": [
-    "GitHub CI on the remediation commit and hosted release artifact dry run",
+    "GitHub CI on the migration commit and hosted release artifact dry run",
     "Desktop and mobile manual accessibility verification",
-    "Confirm publication metadata, npm scope ownership and private security reporting"
+    "Confirm private vulnerability reporting for rms-pro/gve and maintainer npm publish access",
+    "Maintainer-approved first publication and per-package Trusted Publisher setup"
   ],
   "currentBlockers": [
-    "The remediation commit needs a GitHub Actions run",
-    "Hosted dry run and manual release gates remain pending"
+    "GitHub CI on the migration commit and hosted release artifact dry run",
+    "Desktop and mobile manual accessibility verification",
+    "Confirm private vulnerability reporting for rms-pro/gve and maintainer npm publish access"
   ],
   "lastSuccessfulChecks": [
     "pnpm install --frozen-lockfile",
     "pnpm check (lint, strict TypeScript, 29 tests, six packages and playground build)",
-    "pnpm verify:packages 18 and pnpm verify:packages",
-    "pnpm audit --audit-level high, pnpm audit --json, and pnpm audit --prod --json",
+    "pnpm verify:packages 18 and pnpm verify:packages (six isolated npm installations per React major, archive file lists and metadata checked)",
+    "pnpm audit --audit-level high (zero known vulnerabilities for the migration)",
     "GVE_CROSS_BROWSER=1 pnpm test:browser (15 cases passed)",
     "pnpm bench (prior validation)"
   ],
@@ -48,9 +52,11 @@
       "@humanfs/node 0.16.7 to 0.16.8"
     ],
     "remainingRisks": [
-      "GitHub advisory audit is pending on the remediation commit"
+      "GitHub advisory audit is pending on the migration commit"
     ]
   },
   "nextExactCommand": "pnpm install --frozen-lockfile && pnpm check && pnpm exec playwright install --with-deps chromium firefox webkit && pnpm verify:packages && pnpm verify:packages 18 && pnpm audit --audit-level high && GVE_CROSS_BROWSER=1 pnpm test:browser",
-  "verdict": "NOT READY"
+  "verdict": "LOCAL RELEASE CANDIDATE VERIFIED; PUBLICATION PENDING",
+  "releaseVersion": "0.1.0",
+  "npmScope": "@gvejs"
 }

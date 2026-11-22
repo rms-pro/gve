@@ -2,7 +2,7 @@
 
 ## Core and trace contract
 
-`@gve/core` exports `defineAlgorithm`, `isJson`, `isEvent`, `reduceEvent`, `serializeTrace`, `parseTrace`, `validateTrace`, `describeEvent`, and `GveError`. The exported types describe JSON, schemas, algorithm metadata and definitions, visual state and renderer registration, built-in and custom events, traces, and read limits.
+`@gvejs/core` exports `defineAlgorithm`, `isJson`, `isEvent`, `reduceEvent`, `serializeTrace`, `parseTrace`, `validateTrace`, `describeEvent`, and `GveError`. The exported types describe JSON, schemas, algorithm metadata and definitions, visual state and renderer registration, built-in and custom events, traces, and read limits.
 
 The version 1 trace envelope contains `version`, `algorithm`, `input`, `events` and `result`. Array order is sequence order. `describeEvent(trace, 0)` returns the event, zero-based sequence, algorithm ID, and an identity such as `bubble-sort:0`. IDs are scoped to the trace. Store your own recording identifier when indexing events across multiple traces.
 
@@ -21,8 +21,8 @@ Use `parseTrace(text, algorithm, resultGuard, limits?)` on serialized input. The
 ## Runtime
 
 ```ts
-import { bubbleSort } from '@gve/algorithms';
-import { createPlayback, generateTrace } from '@gve/runtime';
+import { bubbleSort } from '@gvejs/algorithms';
+import { createPlayback, generateTrace } from '@gvejs/runtime';
 
 const trace = generateTrace(bubbleSort, [3, 1, 2]);
 const player = createPlayback(bubbleSort, trace);
@@ -50,6 +50,6 @@ Create a new session to load a different trace. Unsubscribe and dispose the prev
 
 ## Rendering, algorithms and React
 
-`@gve/renderers` exports `formatValue`, `layoutCells`, `layoutDiagram` and corresponding cell, node and diagram types. `@gve/algorithms` exports the twelve definitions in [Algorithm support](ALGORITHM_SUPPORT.md). `@gve/themes` exports `ThemeMode`, `Theme`, and the `@gve/themes/style.css` subpath.
+`@gvejs/renderers` exports `formatValue`, `layoutCells`, `layoutDiagram` and corresponding cell, node and diagram types. `@gvejs/algorithms` exports the twelve definitions in [Algorithm support](ALGORITHM_SUPPORT.md). `@gvejs/themes` exports `ThemeMode`, `Theme`, and the `@gvejs/themes/style.css` subpath.
 
-`@gve/react` exports `AlgorithmVisualizer`, its props type, `usePlayback`, `Visualization`, `PlaybackControls`, `Timeline`, `InputEditor`, `CodePanel`, `VariablesPanel`, and `ExplanationPanel`. Load theme CSS separately. Keep initial input and options references stable while a visualization is active.
+`@gvejs/react` exports `AlgorithmVisualizer`, its props type, `usePlayback`, `Visualization`, `PlaybackControls`, `Timeline`, `InputEditor`, `CodePanel`, `VariablesPanel`, and `ExplanationPanel`. Load theme CSS separately. Keep initial input and options references stable while a visualization is active.

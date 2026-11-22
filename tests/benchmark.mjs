@@ -1,6 +1,6 @@
-import { bubbleSort, mergeSort, fibonacci } from '@gve/algorithms';
-import { createPlayback, generateTrace } from '@gve/runtime';
-import { layoutCells, layoutDiagram } from '@gve/renderers';
+import { bubbleSort, mergeSort, fibonacci } from '@gvejs/algorithms';
+import { createPlayback, generateTrace } from '@gvejs/runtime';
+import { layoutCells, layoutDiagram } from '@gvejs/renderers';
 
 const values = (size) =>
   Array.from({ length: size }, (_, i) => (i * 31) % (size + 3));

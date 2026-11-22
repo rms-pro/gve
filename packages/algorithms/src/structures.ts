@@ -1,5 +1,5 @@
-import { defineAlgorithm } from '@gve/core';
-import type { BuiltinEvent, VisualEdge, VisualNode } from '@gve/core';
+import { defineAlgorithm } from '@gvejs/core';
+import type { BuiltinEvent, VisualEdge, VisualNode } from '@gvejs/core';
 import { numbers } from './sorting.js';
 
 interface GraphInput { vertices: string[]; edges: [string, string][]; start: string }

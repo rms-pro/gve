@@ -11,22 +11,22 @@ importers:
       '@eslint/js':
         specifier: ^9.39.0
         version: 9.39.4
-      '@gve/algorithms':
+      '@gvejs/algorithms':
         specifier: workspace:^
         version: link:packages/algorithms
-      '@gve/core':
+      '@gvejs/core':
         specifier: workspace:^
         version: link:packages/core
-      '@gve/react':
+      '@gvejs/react':
         specifier: workspace:^
         version: link:packages/react
-      '@gve/renderers':
+      '@gvejs/renderers':
         specifier: workspace:^
         version: link:packages/renderers
-      '@gve/runtime':
+      '@gvejs/runtime':
         specifier: workspace:^
         version: link:packages/runtime
-      '@gve/themes':
+      '@gvejs/themes':
         specifier: workspace:^
         version: link:packages/themes
       '@playwright/test':
@@ -65,16 +65,16 @@ importers:
 
   apps/playground:
     dependencies:
-      '@gve/algorithms':
+      '@gvejs/algorithms':
         specifier: workspace:^
         version: link:../../packages/algorithms
-      '@gve/core':
+      '@gvejs/core':
         specifier: workspace:^
         version: link:../../packages/core
-      '@gve/react':
+      '@gvejs/react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@gve/themes':
+      '@gvejs/themes':
         specifier: workspace:^
         version: link:../../packages/themes
       react:
@@ -90,7 +90,7 @@ importers:
 
   packages/algorithms:
     dependencies:
-      '@gve/core':
+      '@gvejs/core':
         specifier: workspace:^
         version: link:../core
 
@@ -98,16 +98,16 @@ importers:
 
   packages/react:
     dependencies:
-      '@gve/core':
+      '@gvejs/core':
         specifier: workspace:^
         version: link:../core
-      '@gve/renderers':
+      '@gvejs/renderers':
         specifier: workspace:^
         version: link:../renderers
-      '@gve/runtime':
+      '@gvejs/runtime':
         specifier: workspace:^
         version: link:../runtime
-      '@gve/themes':
+      '@gvejs/themes':
         specifier: workspace:^
         version: link:../themes
     devDependencies:
@@ -117,13 +117,13 @@ importers:
 
   packages/renderers:
     dependencies:
-      '@gve/core':
+      '@gvejs/core':
         specifier: workspace:^
         version: link:../core
 
   packages/runtime:
     dependencies:
-      '@gve/core':
+      '@gvejs/core':
         specifier: workspace:^
         version: link:../core
 

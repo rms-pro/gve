@@ -1,7 +1,7 @@
-import { bubbleSort } from '@gve/algorithms';
-import { AlgorithmVisualizer } from '@gve/react';
-import type { Theme } from '@gve/themes';
-import '@gve/themes/style.css';
+import { bubbleSort } from '@gvejs/algorithms';
+import { AlgorithmVisualizer } from '@gvejs/react';
+import type { Theme } from '@gvejs/themes';
+import '@gvejs/themes/style.css';
 
 const exampleInput = [8, 3, 5, 1, 9];
 

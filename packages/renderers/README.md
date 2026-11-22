@@ -1,4 +1,4 @@
-# @gve/renderers
+# @gvejs/renderers
 
 Framework-independent GVE visual layouts. MIT-licensed ESM with TypeScript declarations.
 

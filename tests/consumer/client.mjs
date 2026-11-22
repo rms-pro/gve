@@ -1,6 +1,6 @@
-import { AlgorithmVisualizer } from '@gve/react';
-import { bubbleSort } from '@gve/algorithms';
-import '@gve/themes/style.css';
+import { AlgorithmVisualizer } from '@gvejs/react';
+import { bubbleSort } from '@gvejs/algorithms';
+import '@gvejs/themes/style.css';
 import { createElement, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 

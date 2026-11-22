@@ -1,5 +1,5 @@
-import { defineAlgorithm } from '@gve/core';
-import type { BuiltinEvent } from '@gve/core';
+import { defineAlgorithm } from '@gvejs/core';
+import type { BuiltinEvent } from '@gvejs/core';
 import { numbers } from './sorting.js';
 
 interface SearchInput { values: number[]; target: number }

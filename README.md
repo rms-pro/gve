@@ -15,16 +15,16 @@ Open the URL printed by Vite. Pick an algorithm, edit its JSON input, or use the
 
 ## Embed a visualization
 
-The independently packaged ESM libraries use the `@gve` scope and declare their dependencies and React peer requirements. For local distribution, run `pnpm build:packages` followed by `pnpm --recursive --filter "./packages/**" pack` and supply the six tarballs to the consuming project. When the packages are available from your configured registry, install the React component, algorithm library, and styles with:
+The independently packaged ESM libraries use the `@gvejs` scope and declare their dependencies and React peer requirements. For local distribution, run `pnpm build:packages`, then `GVE_PACKAGE_ARTIFACTS=/absolute/path/to/artifacts pnpm verify:packages` to collect six verified tarballs. The first public npm release is planned for version `0.1.0`. See the [release checklist](docs/RELEASE_CHECKLIST.md). When the packages are available from your configured registry, install the React component, algorithm library, and styles with:
 
 ```sh
-pnpm add @gve/react @gve/algorithms @gve/themes
+pnpm add @gvejs/react @gvejs/algorithms @gvejs/themes
 ```
 
 ```tsx
-import { AlgorithmVisualizer } from '@gve/react';
-import { bubbleSort } from '@gve/algorithms';
-import '@gve/themes/style.css';
+import { AlgorithmVisualizer } from '@gvejs/react';
+import { bubbleSort } from '@gvejs/algorithms';
+import '@gvejs/themes/style.css';
 
 const input = [8, 3, 5, 1, 9];
 
@@ -42,13 +42,13 @@ Arrows point from a package to its dependency.
 
 ```mermaid
 graph TD
-  Playground --> ReactBinding["@gve/react"]
-  Playground --> Algorithms["@gve/algorithms"]
-  Playground --> Themes["@gve/themes"]
-  ReactBinding --> Runtime["@gve/runtime"]
-  ReactBinding --> Renderers["@gve/renderers"]
+  Playground --> ReactBinding["@gvejs/react"]
+  Playground --> Algorithms["@gvejs/algorithms"]
+  Playground --> Themes["@gvejs/themes"]
+  ReactBinding --> Runtime["@gvejs/runtime"]
+  ReactBinding --> Renderers["@gvejs/renderers"]
   ReactBinding --> Themes
-  ReactBinding --> Core["@gve/core"]
+  ReactBinding --> Core["@gvejs/core"]
   Runtime --> Core
   Renderers --> Core
   Algorithms --> Core

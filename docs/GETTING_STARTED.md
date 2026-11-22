@@ -18,4 +18,4 @@ cd /path/to/your-app
 pnpm add ./gve-*.tgz react react-dom
 ```
 
-Use `AlgorithmVisualizer` and import `@gve/themes/style.css`. The [React example](../examples/geekiscool-embed.tsx) takes its input and theme from the host. The [API reference](API_REFERENCE.md) shows framework-independent use.
+Use `AlgorithmVisualizer` and import `@gvejs/themes/style.css`. The [React example](../examples/geekiscool-embed.tsx) takes its input and theme from the host. The [API reference](API_REFERENCE.md) shows framework-independent use.

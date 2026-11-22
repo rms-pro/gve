@@ -1,6 +1,6 @@
 # Security
 
-Report a vulnerability privately to a project maintainer through the channel where you obtained GVE. Avoid opening public issues containing vulnerability details. A repository-private reporting route needs to be confirmed before release.
+For vulnerabilities in the `@gvejs` packages or playground, use the private vulnerability reporting form when enabled. If the form is unavailable, contact a project maintainer privately through the channel where you obtained GVE. Keep vulnerability details out of public issues. [Private vulnerability reporting](https://github.com/rms-pro/gve/security/advisories/new)
 
 Playground visitors supply JSON inputs only. Algorithms, custom schemas, reducers, renderer registrations, and themes are trusted application code. GVE uses React text nodes for user-visible strings and contains no dynamic source evaluator, dynamic algorithm imports, or browser storage. Namespaced schema lookup checks own properties. Reducers update records via computed own keys. Serialized trace readers bound the number of events, text length, and JSON depth. Imported trace results should be validated with an application-specific predicate.
 

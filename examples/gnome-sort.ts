@@ -1,5 +1,5 @@
-import { defineAlgorithm } from '@gve/core';
-import type { CustomEvent, Schema } from '@gve/core';
+import { defineAlgorithm } from '@gvejs/core';
+import type { CustomEvent, Schema } from '@gvejs/core';
 
 type Move = CustomEvent<{ index: number }> & { type: 'example:move' };
 const moveSchema: Schema<Move['payload']> = (value): value is Move['payload'] =>

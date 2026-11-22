@@ -1,4 +1,4 @@
-# @gve/react
+# @gvejs/react
 
 React integration for GVE playback and visualization. MIT-licensed ESM with TypeScript declarations.
 

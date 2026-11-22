@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import type { Algorithm } from '@gve/core';
-import { AlgorithmVisualizer } from '@gve/react';
+import type { Algorithm } from '@gvejs/core';
+import { AlgorithmVisualizer } from '@gvejs/react';
 import {
   bubbleSort, selectionSort, insertionSort, mergeSort, quickSort, linearSearch, binarySearch,
   bfs, dfs, bstInsertion, stackOperations, fibonacci,
-} from '@gve/algorithms';
-import type { ThemeMode } from '@gve/themes';
-import '@gve/themes/style.css';
+} from '@gvejs/algorithms';
+import type { ThemeMode } from '@gvejs/themes';
+import '@gvejs/themes/style.css';
 import './playground.css';
 
 function catalogEntry<I, R>(algorithm: Algorithm<I, R>) {

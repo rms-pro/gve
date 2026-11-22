@@ -1,5 +1,5 @@
 {
-  "name": "@gve/renderers",
+  "name": "@gvejs/renderers",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
@@ -15,11 +15,23 @@
     }
   },
   "dependencies": {
-    "@gve/core": "workspace:^"
+    "@gvejs/core": "workspace:^"
   },
   "description": "Framework-independent GVE visual layouts",
   "sideEffects": false,
   "engines": {
     "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rms-pro/gve.git",
+    "directory": "packages/renderers"
+  },
+  "homepage": "https://github.com/rms-pro/gve/tree/main/packages/renderers#readme",
+  "bugs": {
+    "url": "https://github.com/rms-pro/gve/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,6 +1,7 @@
 name: Release artifact dry run
 on:
   workflow_dispatch:
+  workflow_call:
 permissions:
   contents: read
 jobs:
@@ -22,10 +23,11 @@ jobs:
       - run: pnpm test:browser
         env:
           GVE_CROSS_BROWSER: '1'
-      - run: pnpm verify:packages
       - run: pnpm verify:packages 18
       - run: pnpm audit --audit-level high
-      - run: pnpm --recursive --filter "./packages/**" pack --pack-destination "${{ runner.temp }}/gve-artifacts"
+      - run: pnpm verify:packages
+        env:
+          GVE_PACKAGE_ARTIFACTS: ${{ runner.temp }}/gve-artifacts
       - uses: actions/upload-artifact@v4
         with:
           name: gve-release-dry-run

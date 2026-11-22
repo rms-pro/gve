@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 0.1.0 (unreleased)
+
+- Prepared the first public npm release under `@gvejs` for core, runtime, renderers, React, algorithms, and themes.
+- Added canonical npm metadata and verified archive checks, with a separate manual OIDC workflow for subsequent publications.
 
 - Hardened playback reset, timer scheduling, disposal, and trace ingestion.
 - Added trace-local event identity and optional event metadata.

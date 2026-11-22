@@ -17,15 +17,8 @@ The workspace has six ESM libraries, a private Vite playground, and a Markdown d
 
 Implementation order follows audit, lifecycle and validation, tests, rendering and accessibility, package consumer verification, CI and release dry run, then final audit. See the release checklist and implementation status for current gating evidence.
 
-## Release candidate audit
+## 0.1.0 release candidate
 
-**Verdict: NOT READY.** The [release validation report](RELEASE_VALIDATION_REPORT.md) contains the latest evidence and exact commands.
+The public packages are `@gvejs/core`, `@gvejs/runtime`, `@gvejs/renderers`, `@gvejs/react`, `@gvejs/algorithms`, and `@gvejs/themes`. Framework-independent layouts are exported by `@gvejs/renderers`. All six are ESM packages with TypeScript declarations, and themes also exports its CSS. The root and `@gvejs/playground` are marked private. `apps/docs` contains Markdown and has no package manifest.
 
-- **P0 fix verified in the lockfile.** The current audit found missing optional Rollup and esbuild native records despite the earlier removal of a Darwin-only root dependency. The repaired lockfile passes frozen consistency checks. GitHub verification passed on the baseline commit. The remediation awaits verification on Ubuntu.
-- **P1 resolved locally.** Twenty-nine Vitest tests, Chromium including axe, and React 19 isolated package and browser consumption passed. Trace validation rejects sparse arrays without materializing them and rejects non-string serialized inputs before coercion.
-- **Dependency audit resolved locally.** The registry audit went from 20 findings (8 moderate, 10 high, 2 critical) to zero. Vitest 4.1.12 removes `tinypool`. TypeScript ESLint 8.73.0 updates `minimatch` to 11.0.9. The lockfile resolves `brace-expansion` to 1.1.22 and 5.0.13 on their respective branches and `@humanfs/node` to 0.16.8. Frozen install, `pnpm check`, isolated React 18 and 19 checks, and all 15 Chromium, Firefox, and WebKit tests passed.
-- **P1 open.** GitHub CI on the remediation commit, the hosted artifact dry run, and manual accessibility verification remain pending.
-- **P1 open.** Confirm the canonical GitHub URL, ownership of the `@gve` registry scope, and private vulnerability reporting before stable release.
-- **P2/P3.** Synchronous preparation of large traces remains a practical limit. See [Performance](PERFORMANCE.md).
-
-Package versions remain at 0.1.0. Validation workflows build, test and upload artifacts without publishing.
+The `gvejs` organization has been created and `rms-pro/gve` is the canonical repository. See the [validation report](RELEASE_VALIDATION_REPORT.md) for current test evidence and the [release checklist](RELEASE_CHECKLIST.md) for hosted verification, private reporting, manual accessibility, and npm bootstrap steps.

@@ -1,4 +1,4 @@
-# @gve/core
+# @gvejs/core
 
 Typed event contracts and reducers for GVE. MIT-licensed ESM with TypeScript declarations.
 

@@ -1,5 +1,5 @@
 {
-  "name": "@gve/algorithms",
+  "name": "@gvejs/algorithms",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
@@ -15,11 +15,23 @@
     }
   },
   "dependencies": {
-    "@gve/core": "workspace:^"
+    "@gvejs/core": "workspace:^"
   },
   "description": "Built-in GVE algorithm definitions",
   "sideEffects": false,
   "engines": {
     "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rms-pro/gve.git",
+    "directory": "packages/algorithms"
+  },
+  "homepage": "https://github.com/rms-pro/gve/tree/main/packages/algorithms#readme",
+  "bugs": {
+    "url": "https://github.com/rms-pro/gve/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
