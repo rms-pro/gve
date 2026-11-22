@@ -14,7 +14,8 @@
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "bench": "tsc -b && node --expose-gc tests/benchmark.mjs",
     "build:packages": "tsc -b && node -e \"require('node:fs').copyFileSync('packages/themes/src/style.css', 'packages/themes/dist/style.css')\"",
-    "verify:packages": "node tools/verify-packages.mjs"
+    "verify:packages": "node tools/verify-packages.mjs",
+    "verify:portal-examples": "node tools/verify-portal-examples.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.0",

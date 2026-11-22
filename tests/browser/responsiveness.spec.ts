@@ -4,7 +4,7 @@ import { test } from './fixture.js';
 test('records interaction-to-next-frame latency on a larger visual state', async ({
   page,
 }, info) => {
-  await page.goto('/');
+  await page.goto('/playground/');
   await page.getByRole('button', { name: 'Merge Sort', exact: true }).click();
   await page
     .getByLabel('Input JSON')

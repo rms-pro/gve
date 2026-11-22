@@ -11,7 +11,7 @@ export const test = base.extend({
     const root = resolve('apps/playground/dist');
     await page.route('http://gve.test/**', async (route) => {
       const path = new URL(route.request().url()).pathname;
-      const file = resolve(root, '.' + (path === '/' ? '/index.html' : path));
+      const file = resolve(root, '.' + (path.endsWith('/') ? path + 'index.html' : path));
       if (!file.startsWith(root + sep)) {
         await route.abort();
         return;

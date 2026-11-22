@@ -8,10 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@gvejs/core": "workspace:^",
-    "@gvejs/react": "workspace:^",
-    "@gvejs/algorithms": "workspace:^",
-    "@gvejs/themes": "workspace:^",
+    "@gvejs/algorithms": "0.1.0",
+    "@gvejs/core": "0.1.0",
+    "@gvejs/react": "0.1.0",
+    "@gvejs/themes": "0.1.0",
     "react": "^19",
     "react-dom": "^19"
   },

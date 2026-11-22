@@ -66,17 +66,17 @@ importers:
   apps/playground:
     dependencies:
       '@gvejs/algorithms':
-        specifier: workspace:^
-        version: link:../../packages/algorithms
+        specifier: 0.1.0
+        version: 0.1.0
       '@gvejs/core':
-        specifier: workspace:^
-        version: link:../../packages/core
+        specifier: 0.1.0
+        version: 0.1.0
       '@gvejs/react':
-        specifier: workspace:^
-        version: link:../../packages/react
+        specifier: 0.1.0
+        version: 0.1.0(react@19.3.1)
       '@gvejs/themes':
-        specifier: workspace:^
-        version: link:../../packages/themes
+        specifier: 0.1.0
+        version: 0.1.0
       react:
         specifier: ^19
         version: 19.3.1
@@ -334,6 +334,32 @@ packages:
   '@eslint/plugin-kit@0.4.1':
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@gvejs/algorithms@0.1.0':
+    resolution: {integrity: sha512-B68gxZzdS2nlnZloQZoH/+S7IALVYrH2HChRwIuA30/9dcwnTGNp7BVzNpJTIfZlV9GHadeeS/gltU/7rOmKyw==}
+    engines: {node: '>=22'}
+
+  '@gvejs/core@0.1.0':
+    resolution: {integrity: sha512-SiVZzuBjY3iOne4bxFoNp2jsX6w5wDB5ipiRijbDH/rapb2zFsUaoZllMDNncj0xb3RHiFX1AqpX6oCZryV7fA==}
+    engines: {node: '>=22'}
+
+  '@gvejs/react@0.1.0':
+    resolution: {integrity: sha512-7PO1DfgLzCfUZxieJ7dqlzSAEVULsszvSW3XnUZ/qPvJAXG6VxVRX/pGfn4GxrcfG3k9I4dpuxCBLNg/nHNzbQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      react: ^18 || ^19
+
+  '@gvejs/renderers@0.1.0':
+    resolution: {integrity: sha512-nggtIiw/yzhYtMxZ5kI8loSbT6PQM4Vt/SnudPOfSZvb6pMUdlh5HcjvrqDoEP0yXBxC5EBtgqkHzKCbWTxE1Q==}
+    engines: {node: '>=22'}
+
+  '@gvejs/runtime@0.1.0':
+    resolution: {integrity: sha512-p5N3jbDBI72ieDpQXUl+C7e8vQV+Gd3E1mBY7aE1CTKIgt4yIkJ3cddJ2BriSdDsNz0UVhBl0TwF1SSu5fSjjQ==}
+    engines: {node: '>=22'}
+
+  '@gvejs/themes@0.1.0':
+    resolution: {integrity: sha512-qZupcK4MuqAOVuDdQ4xuNB999aMjKshxnndDkaZ3bLZRwfpU6nZ1D9gKYME2TB6FnOxuOfBLEMvgrkhPNnBT7g==}
+    engines: {node: '>=22'}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -1302,6 +1328,30 @@ snapshots:
     dependencies:
       '@eslint/core': 0.17.0
       levn: 0.4.1
+
+  '@gvejs/algorithms@0.1.0':
+    dependencies:
+      '@gvejs/core': 0.1.0
+
+  '@gvejs/core@0.1.0': {}
+
+  '@gvejs/react@0.1.0(react@19.3.1)':
+    dependencies:
+      '@gvejs/core': 0.1.0
+      '@gvejs/renderers': 0.1.0
+      '@gvejs/runtime': 0.1.0
+      '@gvejs/themes': 0.1.0
+      react: 19.3.1
+
+  '@gvejs/renderers@0.1.0':
+    dependencies:
+      '@gvejs/core': 0.1.0
+
+  '@gvejs/runtime@0.1.0':
+    dependencies:
+      '@gvejs/core': 0.1.0
+
+  '@gvejs/themes@0.1.0': {}
 
   '@humanfs/core@0.19.2':
     dependencies:

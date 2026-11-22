@@ -1,6 +1,6 @@
 # GVE developer guide
 
-[Installation and quick start](../../README.md#run-the-playground)
+[Installation and quick start](../../README.md#run-the-developer-portal)
 
 ## Algorithm definitions
 

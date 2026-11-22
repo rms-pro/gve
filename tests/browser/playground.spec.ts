@@ -6,7 +6,7 @@ test('plays, rewinds, seeks and applies validated input', async ({
   page,
   browserName,
 }) => {
-  await page.goto('/');
+  await page.goto('/playground/');
   // WebKit defaults to Option+Tab for keyboard navigation to links.
   await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
   const skipLink = page.getByRole('link', { name: 'Skip to visualization' });
@@ -55,7 +55,7 @@ test('selects a graph algorithm and switches themes on a narrow screen', async (
   page,
 }) => {
   await page.setViewportSize({ width: 320, height: 800 });
-  await page.goto('/');
+  await page.goto('/playground/');
   await page.getByRole('button', { name: 'Breadth-first Search' }).click();
   await expect(
     page.getByRole('img', { name: 'graph with 5 nodes' }),
@@ -82,7 +82,7 @@ test('pauses, changes speed, resets and disposes the running view on selection',
   page,
 }) => {
   await page.clock.install();
-  await page.goto('/');
+  await page.goto('/playground/');
   const timeline = page.getByRole('slider', { name: 'Timeline' });
   await expect(
     page.getByRole('button', { name: 'Stop and reset' }),
@@ -122,7 +122,7 @@ test('axe scans both themes and reduced motion removes cell transitions', async 
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
+  await page.goto('/playground/');
   await page.addScriptTag({ content: axe.source });
   for (const theme of ['dark', 'light']) {
     await page.getByLabel('Theme').selectOption(theme);

@@ -2,7 +2,7 @@
 
 GVE is a TypeScript toolkit for teaching algorithms through deterministic, inspectable visualizations. Algorithms emit typed events, pure reducers turn events into state, and renderers draw that state. The same trace can be saved, replayed, and rendered in different hosts.
 
-## Run the playground
+## Run the developer portal
 
 Use Node.js 22 and pnpm 10.
 
@@ -11,11 +11,11 @@ pnpm install
 pnpm dev
 ```
 
-Open the URL printed by Vite. Pick an algorithm, edit its JSON input, or use the timeline to inspect a specific step. The catalog includes five sorts, two searches, BFS, DFS, BST insertion, stack operations, and Fibonacci recursion.
+Open the URL printed by Vite for the homepage, documentation, and examples. In the playground, pick an algorithm, edit its JSON input, or use the timeline to inspect a specific step. The catalog includes five sorts, two searches, BFS, DFS, BST insertion, stack operations, and Fibonacci recursion.
 
 ## Embed a visualization
 
-The independently packaged ESM libraries use the `@gvejs` scope and declare their dependencies and React peer requirements. For local distribution, run `pnpm build:packages`, then `GVE_PACKAGE_ARTIFACTS=/absolute/path/to/artifacts pnpm verify:packages` to collect six verified tarballs. The first public npm release is planned for version `0.1.0`. See the [release checklist](docs/RELEASE_CHECKLIST.md). When the packages are available from your configured registry, install the React component, algorithm library, and styles with:
+The independently packaged ESM libraries use the `@gvejs` scope and declare their dependencies and React peer requirements. For local distribution, run `pnpm build:packages`, then `GVE_PACKAGE_ARTIFACTS=/absolute/path/to/artifacts pnpm verify:packages` to collect six verified tarballs. The first public npm release is version `0.1.0`. Install the React component, algorithm library, and styles with the following command.
 
 ```sh
 pnpm add @gvejs/react @gvejs/algorithms @gvejs/themes
@@ -54,7 +54,7 @@ graph TD
   Algorithms --> Core
 ```
 
-`apps/docs` contains the developer guide. `examples` contains an embeddable lesson and a custom algorithm. `tests` contains the engine suite, browser suite, and benchmark.
+`apps/playground` builds the developer portal, and `apps/docs` contains the repository developer guide. `examples` contains an embeddable lesson, a headless trace replay, and a custom algorithm. `tests` contains the engine suite, browser suite, and benchmark.
 
 ## Contributing
 
@@ -62,7 +62,7 @@ graph TD
 2. Run `pnpm format`, `pnpm check`, and `pnpm test:browser` before opening a pull request. Browser tests require `pnpm exec playwright install chromium` and a completed build.
 3. Use [Semantic Versioning](https://semver.org/) for package releases. Document any breaking API change and use a new trace schema version when serialized semantics change.
 
-[Developer guide](apps/docs/README.md) · [MIT license](LICENSE)
+[Portal architecture and deployment](docs/DEVELOPER_PORTAL.md) · [Developer guide](apps/docs/README.md) · [MIT license](LICENSE)
 
 ## Release engineering
 
