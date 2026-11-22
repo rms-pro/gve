@@ -51,7 +51,7 @@ Use `RendererRegistration<T>` to bind a state kind to a render function. The ren
 
 `AlgorithmVisualizer` combines the controls, timeline, canvas, and inspector. Hosts can also use the individual components with a `Playback` instance. Keep algorithm, input, and options references stable to preserve the current player. Import `@gvejs/themes/style.css` or provide your own component styles. Pass a theme object with colors to apply CSS custom properties while retaining light, dark, or system color mode.
 
-Playback controls are native buttons, the timeline uses a keyboard-operable range input, and the canvas supports Left, Right, and Space when focused. The included CSS follows the operating system's reduced-motion preference and keeps the numeric cell values visible throughout playback.
+Playback controls are native buttons and the timeline uses a keyboard-operable range input. When playback controls are enabled and the canvas is focused, Left and Right step through the trace, Space toggles playback, and Shift+Left and Shift+Right scroll wide diagrams. The JSON editor announces validation errors and associates the current error with the input. The included CSS follows the operating system's reduced-motion preference and keeps numeric cell values visible throughout playback.
 
 The [embedding example](../../examples/geekiscool-embed.tsx) takes its input and theme from the host. Migrate existing lessons individually. Keep the app's lesson route and controls as needed and use `Playback` or `AlgorithmVisualizer` for the trace and rendering.
 

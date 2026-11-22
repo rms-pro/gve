@@ -30,6 +30,7 @@ function App() {
   const entry = entries.find(item => item.metadata.id === selected)!;
   return (
     <div className="playground" data-theme={theme}>
+      <a className="skip-link" href="#visualizer">Skip to visualization</a>
       <header className="masthead">
         <a className="brand" href="./"><span aria-hidden="true">G</span> GVE <small>Playground</small></a>
         <label className="theme">Theme <select value={theme} onChange={e => setTheme(e.target.value as ThemeMode)}>
@@ -45,7 +46,7 @@ function App() {
                 onClick={() => select(metadata.id)}>{metadata.title}</button>)}
           </section>)}
         </nav>
-        <main>
+        <main id="visualizer" tabIndex={-1}>
           <header className="intro"><p>{entry.metadata.category}</p><h1>{entry.metadata.title}</h1>
             <div>{entry.metadata.description}</div>
           </header>

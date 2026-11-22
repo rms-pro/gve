@@ -1,6 +1,6 @@
 # Release candidate validation
 
-**Verdict for `@gvejs` 0.1.0** — Local automated gates passed. Ubuntu CI, the hosted artifact dry run, manual accessibility, private reporting setup, and registry publication approval are pending.
+Local automated gates passed for the `@gvejs` 0.1.0 release documentation and accessibility changes based on `051f3ce`. Ubuntu CI, the hosted artifact dry run, manual accessibility, private reporting setup, and registry publication approval are pending for the reviewed release commit.
 
 ## Environment
 
@@ -8,14 +8,14 @@ Validation ran on macOS ARM64 with Node.js 22.23.4, npm 10.9.9, pnpm 10.34.9, Vi
 
 | Gate | Result | Evidence |
 | --- | --- | --- |
-| Frozen workspace install | Pass | `pnpm install --frozen-lockfile` installed all eight workspace projects. |
+| Frozen workspace install | Pass | `pnpm install --frozen-lockfile --offline` confirmed all eight workspace projects were up to date. pnpm skipped the esbuild install script and the production build passed. |
 | Lint, TypeScript, tests and production build | Pass | `pnpm check` passed all 29 Vitest tests and built the six libraries and playground. The tests include deterministic playback and version 1 trace compatibility checks. |
 | React 18 external consumer | Pass | `pnpm verify:packages 18` installed all six archives outside the monorepo with React 18.3.1. |
 | React 19 external consumer | Pass | `pnpm verify:packages` installed all six archives outside the monorepo with React 19.2.4 and exported the six verified tarballs. |
 | Package contents and public exports | Pass | Both consumer checks validated metadata, matching MIT files, portable internal dependency ranges, ESM imports, declarations, CSS, SSR, and Chromium lifecycle behavior. The archive allowlist permits package manifests, READMEs, MIT files, compiled JS, declarations, and the exported themes CSS. |
-| Browser and automated accessibility | Pass | `GVE_CROSS_BROWSER=1 pnpm test:browser` passed all 15 cases across Chromium, Firefox, and WebKit, including axe in both themes and reduced motion. |
+| Browser and automated accessibility | Pass | `GVE_CROSS_BROWSER=1 pnpm test:browser` passed all 15 cases across Chromium, Firefox, and WebKit. Coverage includes axe in both themes, reduced motion, keyboard skip navigation, associated JSON errors, and keyboard scrolling at 320 CSS pixels. |
 | Registry advisory audit | Pass | `pnpm audit --audit-level high` reported zero known vulnerabilities. |
-| Hosted Linux CI and artifact dry run | Pending | Workflow YAML and the publishing shell block were parsed locally. GitHub execution for the migration commit is pending. |
+| Hosted Linux CI and artifact dry run | Pending | Match both CI jobs and the successful artifact run to the reviewed release commit. |
 | Manual accessibility and private vulnerability reporting | Pending | Complete the desktop and mobile matrix and verify the canonical repository's private reporting form. |
 | npm bootstrap and OIDC | Pending | The organization exists per maintainer confirmation. The approved first publication and per-package Trusted Publisher setup require maintainer action. |
 

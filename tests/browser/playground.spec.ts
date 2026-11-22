@@ -2,8 +2,17 @@ import { expect } from '@playwright/test';
 import axe from 'axe-core';
 import { test } from './fixture.js';
 
-test('plays, rewinds, seeks and applies validated input', async ({ page }) => {
+test('plays, rewinds, seeks and applies validated input', async ({
+  page,
+  browserName,
+}) => {
   await page.goto('/');
+  // WebKit defaults to Option+Tab for keyboard navigation to links.
+  await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
+  const skipLink = page.getByRole('link', { name: 'Skip to visualization' });
+  await expect(skipLink).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('main')).toBeFocused();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
     'Bubble Sort',
   );
@@ -24,10 +33,19 @@ test('plays, rewinds, seeks and applies validated input', async ({ page }) => {
   await timeline.focus();
   await timeline.press('End');
   await expect(values).toHaveText(['1', '2', '3', '4', '5', '7', '8', '9']);
-  await page.getByLabel('Input JSON').fill('null');
+  const input = page.getByLabel('Input JSON');
+  await input.fill('[');
+  await page.getByRole('button', { name: 'Apply input' }).click();
+  await expect(input).toHaveAttribute('aria-invalid', 'true');
+  await expect(input).toHaveAccessibleDescription(
+    await page.getByRole('alert').innerText(),
+  );
+  await input.fill('null');
+  await expect(input).not.toHaveAttribute('aria-invalid');
+  await expect(page.getByRole('alert')).toHaveCount(0);
   await page.getByRole('button', { name: 'Apply input' }).click();
   await expect(page.getByRole('alert')).toContainText('schema');
-  await page.getByLabel('Input JSON').fill('[2,1]');
+  await input.fill('[2,1]');
   await page.getByRole('button', { name: 'Apply input' }).click();
   await page.getByRole('button', { name: 'Play', exact: true }).click();
   await expect(values).toHaveText(['1', '2']);
@@ -36,7 +54,7 @@ test('plays, rewinds, seeks and applies validated input', async ({ page }) => {
 test('selects a graph algorithm and switches themes on a narrow screen', async ({
   page,
 }) => {
-  await page.setViewportSize({ width: 390, height: 800 });
+  await page.setViewportSize({ width: 320, height: 800 });
   await page.goto('/');
   await page.getByRole('button', { name: 'Breadth-first Search' }).click();
   await expect(
@@ -48,6 +66,16 @@ test('selects a graph algorithm and switches themes on a narrow screen', async (
     () => document.documentElement.scrollWidth === innerWidth,
   );
   expect(fits).toBe(true);
+  const canvas = page.getByRole('region', { name: 'Visualization canvas' });
+  await expect(canvas).toHaveAccessibleDescription(/Shift/);
+  await canvas.press('Shift+ArrowRight');
+  await expect.poll(() => canvas.evaluate((element) => element.scrollLeft))
+    .toBeGreaterThan(0);
+  await expect(page.getByRole('slider', { name: 'Timeline' }))
+    .toHaveAttribute('aria-valuetext', /^Step 0 of /);
+  await canvas.press('Shift+ArrowLeft');
+  await expect.poll(() => canvas.evaluate((element) => element.scrollLeft))
+    .toBe(0);
 });
 
 test('pauses, changes speed, resets and disposes the running view on selection', async ({

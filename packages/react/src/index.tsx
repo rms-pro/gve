@@ -1,6 +1,7 @@
 import {
   memo,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -221,6 +222,7 @@ export function InputEditor({
 }) {
   const [draft, setDraft] = useState(() => JSON.stringify(input));
   const [error, setError] = useState('');
+  const errorId = useId();
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
@@ -235,13 +237,18 @@ export function InputEditor({
       <label>
         Input JSON
         <textarea
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? errorId : undefined}
           spellCheck={false}
           value={draft}
-          onChange={(e) => setDraft(e.target.value)}
+          onChange={(e) => {
+            setDraft(e.target.value);
+            setError('');
+          }}
         />
       </label>
       <button type="submit">Apply input</button>
-      {error && <p role="alert">{error}</p>}
+      {error && <p id={errorId} role="alert">{error}</p>}
     </form>
   );
 }
@@ -394,6 +401,8 @@ function Player<I, R, E extends CustomEvent>({
     return () => document.removeEventListener('fullscreenchange', sync);
   }, []);
   const renderer = props.renderers?.find((item) => item.kind === state.kind);
+  const controlsVisible = props.showControls !== false;
+  const canvasHelpId = useId();
   return (
     <section
       ref={section}
@@ -406,7 +415,6 @@ function Player<I, R, E extends CustomEvent>({
             <h3>Visualization</h3>
             <button
               type="button"
-              aria-pressed={fullscreen}
               onClick={async () => {
                 try {
                   if (fullscreen) await document.exitFullscreen();
@@ -421,23 +429,40 @@ function Player<I, R, E extends CustomEvent>({
             </button>
           </div>
           {fullscreenError && <p role="status">{fullscreenError}</p>}
+          {controlsVisible && (
+            <p id={canvasHelpId} className="gve-visually-hidden">
+              Use left and right arrows to step, Space to play or pause, and
+              Shift with left or right arrow to scroll sideways.
+            </p>
+          )}
           <div
             className="gve-canvas"
             tabIndex={0}
-            aria-label="Visualization canvas. Use arrow keys to step and space to play."
+            role="region"
+            aria-label="Visualization canvas"
+            aria-describedby={controlsVisible ? canvasHelpId : undefined}
             onKeyDown={(event) => {
               if (
                 event.target !== event.currentTarget ||
-                props.showControls === false
+                !controlsVisible ||
+                event.altKey ||
+                event.ctrlKey ||
+                event.metaKey
               )
                 return;
               if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
                 event.preventDefault();
+                if (event.shiftKey) {
+                  event.currentTarget.scrollBy({
+                    left: event.key === 'ArrowLeft' ? -80 : 80,
+                  });
+                  return;
+                }
                 playback.pause();
                 if (event.key === 'ArrowLeft') playback.stepBackward();
                 else playback.stepForward();
               }
-              if (event.key === ' ') {
+              if (event.key === ' ' && !event.shiftKey) {
                 event.preventDefault();
                 if (playing) playback.pause();
                 else if (
@@ -460,7 +485,7 @@ function Player<I, R, E extends CustomEvent>({
               ? 'Playing.'
               : `${length && position === length ? 'Complete' : 'Paused'}. Step ${position} of ${length}. ${state.explanation ?? ''}`}
           </p>
-          {props.showControls !== false && (
+          {controlsVisible && (
             <>
               <PlaybackControls playback={playback} />
               <Timeline playback={playback} />

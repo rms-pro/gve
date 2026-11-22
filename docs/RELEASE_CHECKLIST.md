@@ -25,7 +25,15 @@ artifact_dir="$(mktemp -d)"
 GVE_PACKAGE_ARTIFACTS="$artifact_dir" pnpm verify:packages
 ```
 
-After merging the reviewed commit to `main`, dispatch `gh workflow run release-dry-run.yml --repo rms-pro/gve --ref main`. Check that both CI jobs and the dry run pass for that commit. Download the `gve-release-dry-run` artifact from its Actions run. It contains the same archives that the job installed and verified with React 19.
+After merging the reviewed commit to `main`, dispatch `gh workflow run release-dry-run.yml --repo rms-pro/gve --ref main`. Match the commit SHA on the dry run to the reviewed release commit and confirm both CI jobs passed for that SHA. Use the matching dry-run ID to download the six archives that the job installed and verified with React 19.
+
+```sh
+gh run list --repo rms-pro/gve --workflow release-dry-run.yml --branch main --commit "$release_sha"
+artifact_dir="$(mktemp -d)"
+gh run download "$run_id" --repo rms-pro/gve --name gve-release-dry-run --dir "$artifact_dir"
+```
+
+Set `release_sha` to the reviewed commit before listing runs. Set `run_id` to the matching successful run before downloading the archives.
 
 ## First publication
 
