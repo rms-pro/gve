@@ -1,0 +1,25 @@
+{
+  "name": "@gve/runtime",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@gve/core": "workspace:^"
+  },
+  "description": "Trace generation and deterministic GVE playback",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "gve",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.9",
+  "scripts": {
+    "build": "pnpm build:packages && pnpm --filter @gve/playground build",
+    "typecheck": "tsc -b && tsc --noEmit -p tsconfig.check.json",
+    "dev": "pnpm build:packages && pnpm --filter @gve/playground dev",
+    "test": "tsc -b && vitest run",
+    "test:browser": "playwright test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "bench": "tsc -b && node --expose-gc tests/benchmark.mjs",
+    "build:packages": "tsc -b && node -e \"require('node:fs').copyFileSync('packages/themes/src/style.css', 'packages/themes/dist/style.css')\"",
+    "verify:packages": "node tools/verify-packages.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@gve/algorithms": "workspace:^",
+    "@gve/core": "workspace:^",
+    "@gve/react": "workspace:^",
+    "@gve/renderers": "workspace:^",
+    "@gve/runtime": "workspace:^",
+    "@gve/themes": "workspace:^",
+    "@playwright/test": "1.58.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.0",
+    "prettier": "^3.6.0",
+    "react": "^19",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^3.2.0",
+    "axe-core": "4.11.2"
+  }
+}

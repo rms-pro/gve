@@ -1,0 +1,39 @@
+name: Release artifact dry run
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  artifacts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.4
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm test:browser
+        env:
+          GVE_CROSS_BROWSER: '1'
+      - run: pnpm verify:packages
+      - run: pnpm verify:packages 18
+      - run: pnpm audit --audit-level high
+      - run: pnpm --recursive --filter "./packages/**" pack --pack-destination "${{ runner.temp }}/gve-artifacts"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gve-release-dry-run
+          path: ${{ runner.temp }}/gve-artifacts/*.tgz
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-diagnostics
+          path: test-results/
+          if-no-files-found: ignore

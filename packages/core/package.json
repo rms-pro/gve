@@ -1,0 +1,23 @@
+{
+  "name": "@gve/core",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {},
+  "description": "Typed event contracts and reducers for GVE",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  }
+}

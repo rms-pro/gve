@@ -1,0 +1,27 @@
+{
+  "name": "@gve/themes",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts",
+    "LICENSE",
+    "dist/style.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "dependencies": {},
+  "description": "Theme contracts and component stylesheet for GVE",
+  "sideEffects": [
+    "./dist/style.css"
+  ],
+  "engines": {
+    "node": ">=22"
+  }
+}
