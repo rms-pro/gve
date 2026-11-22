@@ -21,9 +21,10 @@ Implementation order follows audit, lifecycle and validation, tests, rendering a
 
 **Verdict: NOT READY.** The [release validation report](RELEASE_VALIDATION_REPORT.md) contains the latest evidence and exact commands.
 
-- **P0 fix verified in the lockfile.** The current audit found missing optional Rollup and esbuild native records despite the earlier removal of a Darwin-only root dependency. The repaired lockfile passes frozen consistency checks. Clean Linux execution remains blocked locally.
+- **P0 fix verified in the lockfile.** The current audit found missing optional Rollup and esbuild native records despite the earlier removal of a Darwin-only root dependency. The repaired lockfile passes frozen consistency checks. GitHub verification passed on the baseline commit. The remediation awaits verification on Ubuntu.
 - **P1 resolved locally.** Twenty-nine Vitest tests, Chromium including axe, and React 19 isolated package and browser consumption passed. Trace validation rejects sparse arrays without materializing them and rejects non-string serialized inputs before coercion.
-- **P1 open.** GitHub CI and artifact dry run, React 18 tarball consumption, Firefox and WebKit, manual accessibility and registry audit remain pending. Registry and browser CDN DNS were unavailable.
+- **Dependency audit resolved locally.** The registry audit went from 20 findings (8 moderate, 10 high, 2 critical) to zero. Vitest 4.1.12 removes `tinypool`. TypeScript ESLint 8.73.0 updates `minimatch` to 11.0.9. The lockfile resolves `brace-expansion` to 1.1.22 and 5.0.13 on their respective branches and `@humanfs/node` to 0.16.8. Frozen install, `pnpm check`, isolated React 18 and 19 checks, and all 15 Chromium, Firefox, and WebKit tests passed.
+- **P1 open.** GitHub CI on the remediation commit, the hosted artifact dry run, and manual accessibility verification remain pending.
 - **P1 open.** Confirm the canonical GitHub URL, ownership of the `@gve` registry scope, and private vulnerability reporting before stable release.
 - **P2/P3.** Synchronous preparation of large traces remains a practical limit. See [Performance](PERFORMANCE.md).
 

@@ -2,29 +2,55 @@
   "completedPhases": [
     "Release configuration audit and native lockfile repair",
     "Local lint, typecheck, 29 Vitest tests and production build",
-    "React 19 isolated package contents, ESM, types, SSR and Chromium lifecycle verification",
-    "Chromium playground, axe and browser responsiveness verification",
+    "Isolated React 18 and 19 package, declarations, SSR and Chromium lifecycle verification",
+    "Chromium, Firefox and WebKit playground, axe and responsiveness verification",
+    "Registry advisory audit and dependency remediation",
     "Trace boundary hardening and benchmark rerun",
     "Release validation report and manual accessibility checklist"
   ],
   "pendingPhases": [
-    "Clean Linux install, GitHub CI and release artifact dry run",
-    "React 18 isolated consumer, Firefox and WebKit",
-    "Registry advisory audit and desktop and mobile manual accessibility",
-    "Confirm repository URL, npm scope ownership and private security reporting"
+    "GitHub CI on the remediation commit and hosted release artifact dry run",
+    "Desktop and mobile manual accessibility verification",
+    "Confirm publication metadata, npm scope ownership and private security reporting"
   ],
   "currentBlockers": [
-    "Registry and browser CDN DNS are blocked locally",
-    "React 18 dependencies are absent from the offline cache",
-    "Docker socket and GitHub workflow execution are unavailable in this checkout"
+    "The remediation commit needs a GitHub Actions run",
+    "Hosted dry run and manual release gates remain pending"
   ],
   "lastSuccessfulChecks": [
-    "Frozen lockfile consistency with optional native toolchain records",
-    "pnpm check: lint, strict TypeScript, 29 Vitest tests and production build",
-    "Five Chromium playground tests, including axe and responsiveness",
-    "Six tarballs in a React 19 consumer, including client mount and timer cleanup",
-    "pnpm bench"
+    "pnpm install --frozen-lockfile",
+    "pnpm check (lint, strict TypeScript, 29 tests, six packages and playground build)",
+    "pnpm verify:packages 18 and pnpm verify:packages",
+    "pnpm audit --audit-level high, pnpm audit --json, and pnpm audit --prod --json",
+    "GVE_CROSS_BROWSER=1 pnpm test:browser (15 cases passed)",
+    "pnpm bench (prior validation)"
   ],
+  "dependencyAudit": {
+    "baseline": {
+      "moderate": 8,
+      "high": 10,
+      "critical": 2,
+      "total": 20
+    },
+    "remediated": {
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "productionFindings": 0,
+    "dependenciesChanged": [
+      "vitest and @vitest/mocker 3.2.7 to 4.1.12",
+      "tinypool 1.1.1 removed",
+      "typescript-eslint 8.58.0 to 8.73.0",
+      "minimatch 10.2.5 to 11.0.9 on the TypeScript ESLint branch",
+      "brace-expansion 1.1.13 to 1.1.22 and 5.0.5 to 5.0.13",
+      "@humanfs/node 0.16.7 to 0.16.8"
+    ],
+    "remainingRisks": [
+      "GitHub advisory audit is pending on the remediation commit"
+    ]
+  },
   "nextExactCommand": "pnpm install --frozen-lockfile && pnpm check && pnpm exec playwright install --with-deps chromium firefox webkit && pnpm verify:packages && pnpm verify:packages 18 && pnpm audit --audit-level high && GVE_CROSS_BROWSER=1 pnpm test:browser",
   "verdict": "NOT READY"
 }

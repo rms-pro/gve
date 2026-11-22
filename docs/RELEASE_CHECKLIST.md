@@ -4,9 +4,10 @@
 - [x] Frozen lockfile includes optional Linux native packages.
 - [ ] Clean Linux installation and GitHub CI pass on the release commit, including Chromium, Firefox, and WebKit.
 - [x] Six tarballs pass isolated React 19 ESM, CSS, declaration, SSR, client mounting, playback, and unmount cleanup checks.
-- [x] Local Chromium cases pass, including axe in both themes and reduced motion.
-- [ ] Run the GitHub release artifact dry run and registry dependency audit.
-- [ ] Verify the React 18 peer range in an isolated consumer.
+- [x] `GVE_CROSS_BROWSER=1 pnpm test:browser` passes all 15 local Chromium, Firefox, and WebKit cases, including axe and reduced motion.
+- [x] Verify all six tarballs in a React 18 isolated consumer with `pnpm verify:packages 18`.
+- [x] Run the registry dependency audit. The baseline had 20 findings (8 moderate, 10 high, 2 critical). After the Vitest and TypeScript ESLint upgrades and lockfile refresh, the full and production-only audits found zero vulnerabilities. See the [advisory inventory](RELEASE_VALIDATION_REPORT.md#dependency-security-audit).
+- [ ] Run the GitHub release artifact dry run.
 - [ ] Complete manual accessibility and browser checks on supported devices.
 - [x] API reference, support matrix, contribution, security, and performance instructions are present.
 - [x] MIT license and per-package license artifacts confirmed.
